@@ -29,7 +29,7 @@
 }
 
 .side-menu-button:hover{
-background-color: rgba(255,255,255,0.09);
+background-color: rgba(255,255,255,0.08);
 }
 
 .side-menu-button span{
@@ -58,9 +58,42 @@ background-color: rgba(255,255,255,0.09);
 }
 
 
+.chat-log{
+  text-align: left;
 
+}
 
+.chat-message.chatgpt{
+  background-color: #444654;
+}
 
+.chat-message-center{
+  display: flex;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:12px;
+  padding-left: 40px; 
+  padding-right: 40px;
+
+}
+
+.avatar{
+  border-radius: 2px;
+  background-color: white;
+  width:30px;
+  height:30px;
+}
+.avatar.chatgpt{
+  border-radius: 50%;
+  background-color: #0da37f;
+  width:40px;
+  height:40px;
+}
+.message{
+  padding-left: 40px; 
+  padding-right: 40px;
+}
 
 
 
