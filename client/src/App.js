@@ -1,10 +1,15 @@
 import chatgpticon from './chatgptlogo.png'
 import './App.css';
 import './normal.css'
+
+
 import {useState, /*useEffect*/} from 'react';
 
 
+
+
 function App() {
+
 
 
   // useEffect(() => {
@@ -14,6 +19,10 @@ function App() {
   const [input, setInput] = useState("");
   // const [models, setModels] = useState([]);
   // const [currentModel, setCurrentModel] = useState("ada");
+
+
+
+
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
     message: "How can i help you?"
@@ -25,6 +34,7 @@ function App() {
   function clearChat(){
     setChatLog([]);
   }
+
 
 
   // function getEngines(){
@@ -51,7 +61,9 @@ function App() {
       },
       body: JSON.stringify({
           message: messages,
+
           // currentModel,
+
         })
     });
 
@@ -59,7 +71,7 @@ function App() {
     setChatLog([...chatLog, {
       user: "gpt", message: `${data.message}
     ` }])
-  }
+}
 
   return (
     <div className="App">
@@ -68,6 +80,7 @@ function App() {
         <span>+</span>
         New chat
       </div>
+
       {/* <div className="models">
         <select onChange={(e) =>{
           setCurrentModel(e.target.value)
@@ -77,6 +90,7 @@ function App() {
           ))}
         </select>
       </div> */}
+
     </aside>
     <section className="chatbox">
 

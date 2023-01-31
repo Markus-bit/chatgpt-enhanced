@@ -6,6 +6,7 @@ const cors = require('cors')
 const configuration = new Configuration({
     organization: "org-yyO7Ng48zxqcIt2XbLOKa26D",
     apiKey: "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",
+
 });
 
 const openai = new OpenAIApi(configuration);
@@ -33,6 +34,7 @@ app.post('/', async (req, res) => {
     })
 });
 
+
 // app.get('/models', async (req, res) => {
 //     const response = await openai.listEngines();
 //     console.log(response.data.data)
@@ -40,6 +42,7 @@ app.post('/', async (req, res) => {
 //         models: response.data.data
 //     })
 // });
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
