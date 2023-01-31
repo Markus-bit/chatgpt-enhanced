@@ -69,7 +69,7 @@ function App() {
         <select onChange={(e) =>{
           setCurrentModel(e.targetvalue)
         }}>
-          {models.map((model, index) => (
+          {models?.map((model, index) => (
             <option key={model.id} value={model.id}>{model.id}</option>
           ))}
         </select>
