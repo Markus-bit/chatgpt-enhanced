@@ -19,7 +19,7 @@ const port = 3080
 
 app.post('/', async (req, res) => {
     const  { message, currentModel } = req.body;
-    console.log( message, "message")
+
     const response = await openai.createCompletion({
         model: `${currentModel}`,
         prompt: `${message}`,
@@ -28,15 +28,14 @@ app.post('/', async (req, res) => {
       });
 
     res.json({
-        message: response.data.choices[0].text
+        message: response.data.choices[0].text,
     })
 });
 
 app.get('/models', async (req, res) => {
     const response = await openai.listEngines();
-    console.log(response.data)
     res.json({
-        models: response.data.data
+        models: response.data
     })
 });
 
