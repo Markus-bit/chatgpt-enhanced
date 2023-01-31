@@ -8,7 +8,7 @@ function App() {
 
 
   useEffect(() => {
-    getModels();
+    getEngines();
   }, [])
 
   const [input, setInput] = useState("");
@@ -27,10 +27,12 @@ function App() {
   }
 
 
-  function getModels(){
+  function getEngines(){
     fetch("http://localhost:3080/models")
-      .then(res => res.json())
-      .then(data => setModels(data.models.data))
+    .then(res => res.json())
+    .then(data => {
+      console.log(data.models.data)
+      setModels(data.models.data)})
   }
 
   async function handleSubmit(e){
@@ -67,9 +69,9 @@ function App() {
       </div>
       <div className="models">
         <select onChange={(e) =>{
-          setCurrentModel(e.targetvalue)
+          setCurrentModel(e.target.value)
         }}>
-          {models?.map((model, index) => (
+          {models.map((model, index) => (
             <option key={model.id} value={model.id}>{model.id}</option>
           ))}
         </select>

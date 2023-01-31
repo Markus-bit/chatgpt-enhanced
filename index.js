@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const configuration = new Configuration({
     organization: "org-yyO7Ng48zxqcIt2XbLOKa26D",
-    apiKey: "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",
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -19,7 +19,8 @@ const port = 3080
 
 app.post('/', async (req, res) => {
     const  { message, currentModel } = req.body;
-
+    console.log(message, "message")
+    console.log(currentModel, "currentModel")
     const response = await openai.createCompletion({
         model: `${currentModel}`,
         prompt: `${message}`,
@@ -28,14 +29,15 @@ app.post('/', async (req, res) => {
       });
 
     res.json({
-        message: response.data.choices[0].text,
+        message: response.data.choices[0].text
     })
 });
 
 app.get('/models', async (req, res) => {
     const response = await openai.listEngines();
+    console.log(response.data.data)
     res.json({
-        models: response.data
+        models: response.data.data
     })
 });
 
