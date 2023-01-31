@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const configuration = new Configuration({
     organization: "org-yyO7Ng48zxqcIt2XbLOKa26D",
-    apiKey: "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",
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -18,11 +18,11 @@ app.use(cors())
 const port = 3080
 
 app.post('/', async (req, res) => {
-    const  { message, currentModel } = req.body;
+    const  { message, /*currentModel*/ } = req.body;
     console.log(message, "message")
-    console.log(currentModel, "currentModel")
+    // console.log(currentModel, "currentModel")
     const response = await openai.createCompletion({
-        model: `${currentModel}`,
+        model: "text-davinci-003", //`${currentModel}`,
         prompt: `${message}`,
         max_tokens: 100,
         temperature: 0.5,
@@ -33,13 +33,13 @@ app.post('/', async (req, res) => {
     })
 });
 
-app.get('/models', async (req, res) => {
-    const response = await openai.listEngines();
-    console.log(response.data.data)
-    res.json({
-        models: response.data.data
-    })
-});
+// app.get('/models', async (req, res) => {
+//     const response = await openai.listEngines();
+//     console.log(response.data.data)
+//     res.json({
+//         models: response.data.data
+//     })
+// });
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

@@ -1,19 +1,19 @@
 import chatgpticon from './chatgptlogo.png'
 import './App.css';
 import './normal.css'
-import {useState, useEffect} from 'react';
+import {useState, /*useEffect*/} from 'react';
 
 
 function App() {
 
 
-  useEffect(() => {
-    getEngines();
-  }, [])
+  // useEffect(() => {
+  //   getEngines();
+  // }, [])
 
   const [input, setInput] = useState("");
-  const [models, setModels] = useState([]);
-  const [currentModel, setCurrentModel] = useState("ada");
+  // const [models, setModels] = useState([]);
+  // const [currentModel, setCurrentModel] = useState("ada");
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
     message: "How can i help you?"
@@ -27,13 +27,13 @@ function App() {
   }
 
 
-  function getEngines(){
-    fetch("http://localhost:3080/models")
-    .then(res => res.json())
-    .then(data => {
-      console.log(data.models.data)
-      setModels(data.models.data)})
-  }
+  // function getEngines(){
+  //   fetch("http://localhost:3080/models")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data.models.data)
+  //     setModels(data.models.data)})
+  // }
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -51,13 +51,14 @@ function App() {
       },
       body: JSON.stringify({
           message: messages,
-          currentModel,
+          // currentModel,
         })
     });
 
     const data = await response.json();
-    await setChatLog([...chatLog, { user: "gpt", message: `${data.message}
-    `} ])
+    setChatLog([...chatLog, {
+      user: "gpt", message: `${data.message}
+    ` }])
   }
 
   return (
@@ -67,15 +68,15 @@ function App() {
         <span>+</span>
         New chat
       </div>
-      <div className="models">
+      {/* <div className="models">
         <select onChange={(e) =>{
           setCurrentModel(e.target.value)
         }}>
-          {models.map((model, index) => (
+          {models.map((model) => (
             <option key={model.id} value={model.id}>{model.id}</option>
           ))}
         </select>
-      </div>
+      </div> */}
     </aside>
     <section className="chatbox">
 
