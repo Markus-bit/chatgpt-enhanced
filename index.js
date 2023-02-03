@@ -4,9 +4,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const configuration = new Configuration({
-    organization: "org-yyO7Ng48zxqcIt2XbLOKa26D",
-    apiKey: "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",
-
+    organization: "org-NEnKs3UK0K3I6PQzHDr2lyq0",    
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -47,3 +46,6 @@ app.post('/', async (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
+
+
+
